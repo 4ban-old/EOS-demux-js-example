@@ -1,6 +1,8 @@
 # EOS-demux-js-example
 Example of daemon to monitor the EOS producer and record committed transactions for specific contracts and actions in the Mongo database.
 
+> The example of API for this daemon you can find [here](https://github.com/4ban/EOS-demux-js-api-example)
+
 ## Description
 This example allows to track the following actions:
 * `<contract account name>::transfer`
