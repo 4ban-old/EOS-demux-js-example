@@ -1,4 +1,4 @@
-const Eos = require('./eos.model')
-const Ledger = require('./ledger.model')
+const Schema_1 = require('./schema_1.model')
+const Schema_2 = require('./schema_2.model')
 
-module.exports = { Eos, Ledger }
+module.exports = { Schema_1, Schema_2 }
