@@ -1,6 +1,6 @@
 require('dotenv').config()
 const { BaseActionWatcher } = require("demux")
-const { NodeosActionReader } = require("demux-eos") // eslint-disable-line
+const { NodeosActionReader } = require("demux-eos")
 const ObjectActionHandler = require("./ObjectActionHandler")
 const handlerVersion = require("./handlerVersions/v1")
 

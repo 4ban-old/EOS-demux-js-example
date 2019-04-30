@@ -1,24 +1,27 @@
 const { AbstractActionHandler } = require("demux")
 const mongoose = require('mongoose')
+const STOP_AT = parseInt(process.env.STOP_AT)
 
 // Initial state
 let state = {
-  from: '', // eos
-  to: '',  // eos
-  quantity: '', // eos
-  currency: '', // eos
-  memo: '', // eos
-  s: '', // ledger
-  fromaccount: '', // ledger
-  toaccount: '', // ledger
-  amount: '', // ledger
-  tokey: '', // ledger
-  comment: '', // ledger
-  nonce: '', // ledger
-  trx_id: '', // eos ledger
-  blockNumber: 0, // eos ledger
-  blockHash: '', // eos ledger
-  handlerVersionName: 'v1' // eos ledger
+  from: '',
+  to: '',
+  quantity: '',
+  currency: '',
+  memo: '',
+  trx_id: '',
+  blockNumber: 0,
+  blockHash: '',
+  handlerVersionName: 'v1'
+}
+
+function stopAt(blockNumber) {
+  // Function stop the service when meet the STOP_AT block number
+  if (blockNumber >= STOP_AT) {
+    console.log("\n####################\n# STOP AT: ", blockNumber)
+    console.log("####################\n")
+    process.exit(1)
+  }
 }
 
 class ObjectActionHandler extends AbstractActionHandler {
@@ -26,6 +29,7 @@ class ObjectActionHandler extends AbstractActionHandler {
     super([handleVersion])
     let options = {
       useNewUrlParser: true,
+      useCreateIndex: true,
       user: username,
       pass: password
     }
@@ -61,6 +65,9 @@ class ObjectActionHandler extends AbstractActionHandler {
   async updateIndexState(stateObj, block, isReplay, handlerVersionName) {
     console.log("Processing block: ", block.blockInfo.blockNumber)
     stateObj.handlerVersionName = handlerVersionName
+    if (STOP_AT) {
+      stopAt(block.blockInfo.blockNumber)
+    }
   }
 }
 
