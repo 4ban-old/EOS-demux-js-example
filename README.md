@@ -1,6 +1,8 @@
 # demux-service
 The daemon to monitor the EOS producer and record committed transactions (actions) into the Mongo database.
 
+There are 2 identical models and effects for them in case to demonstrate how easy to modify it if you want to use different actions, models, save functions
+
 ## Description
 This example tracks the transfer action for different contracts and store them into different collections in the Mongo database.
 * `{contract account name 1}::transfer`
