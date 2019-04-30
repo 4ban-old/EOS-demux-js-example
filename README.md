@@ -54,3 +54,6 @@ MONGODB_PASS={password}
 
 ## Usage
 To run the service: `npm start`
+
+## Additional
+For further use of the database, look at the example implementation of [API example](https://github.com/4ban/EOS-demux-js-api-example)
