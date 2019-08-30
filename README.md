@@ -1,4 +1,6 @@
 # demux-service
+[<img src="https://raw.githubusercontent.com/4ban/EOS-demux-js-example/master/.github/black_img.png">](https://www.buymeacoffee.com/4ban)
+
 The daemon to monitor the EOS producer and record committed transactions (actions) into the Mongo database.
 
 There are 2 identical models and effects for them in case to demonstrate how easy to modify it if you want to use different actions, models, save functions
